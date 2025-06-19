@@ -1,0 +1,19 @@
+{
+  "name": "hospital-api",
+  "version": "1.0.0",
+  "description": "api for hospital",
+  "license": "ISC",
+  "author": "Thilina R. Madushanka",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
