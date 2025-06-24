@@ -75,7 +75,15 @@ const loginUser = (req, res) => {
   );
 };
 
+const getAllUsers = (req, res) => {
+  connection.query('select * from register', (err, rows) => {
+    if (err) throw err
+    res.json(rows);
+  })
+}
+
 module.exports = {
   saveRegistration,
-  loginUser
+  loginUser,
+  getAllUsers
 };
