@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+
+// cors is a middleware that allows cross-origin requests
 var cors = require('cors')
 
 app.use(cors())
