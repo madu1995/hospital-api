@@ -2,6 +2,10 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+var cors = require('cors')
+
+app.use(cors())
+
 const doctorRoute = require('./routes/doctor-route')
 const patientRoute = require('./routes/patient-route')
 const booksRoute = require('./routes/books-route')
