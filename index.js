@@ -6,7 +6,11 @@ const port = 3000
 // cors is a middleware that allows cross-origin requests
 var cors = require('cors')
 
-app.use(cors())
+app.use(cors({
+  origin: 'http://localhost:5173', // or use '*' for all origins (not recommended for production)
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  credentials: true // if you need to send cookies/auth headers
+}));
 
 const doctorRoute = require('./routes/doctor-route')
 const patientRoute = require('./routes/patient-route')
