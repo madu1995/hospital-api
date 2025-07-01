@@ -1,12 +1,12 @@
-const mysql = require('mysql2')
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '7554',
-  database: 'demo'
-})
+// const mysql = require('mysql2')
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '7554',
+//   database: 'demo'
+// })
 
-
+const connection = require("../db/db");
 
 
 const saveBooks = (req, res) => {

@@ -1,10 +1,12 @@
-const mysql = require('mysql2')
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '7554',
-  database: 'demo'
-})
+// const mysql = require('mysql2')
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '7554',
+//   database: 'demo'
+// })
+
+const connection = require("../db/db");
 
 const saveCars = (req, res) => {
   connection.query('INSERT INTO cars (brand, model, price, user_id) VALUES (?, ?, ?, ?)', [
