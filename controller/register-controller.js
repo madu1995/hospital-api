@@ -7,6 +7,7 @@ const connection = mysql.createConnection({
 });
 
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const saveRegistration = async (req, res) => {
   try {
@@ -23,12 +24,10 @@ const saveRegistration = async (req, res) => {
           console.error("Error inserting data:", err);
           return res.status(500).json({ error: "Database error" });
         }
-        res
-          .status(201)
-          .json({
-            message: "User registered successfully",
-            id: results.insertId,
-          });
+        res.status(201).json({
+          message: "User registered successfully",
+          id: results.insertId,
+        });
       }
     );
   } catch (error) {
@@ -73,13 +72,20 @@ const loginUser = (req, res) => {
         return res.status(401).json({ error: "Invalid email or password" });
       }
 
+      // Step 2: Generate JWT on successful login
+      // You can use a secret from .env or hardcode for now
+      const token = jwt.sign(
+        { id: user.id, username: user.username, email: user.email },
+        process.env.JWT_SECRET || process.env.JWT_SECRET, // Use env secret or fallback
+        { expiresIn: "1h" } // Token expires in 1 hour
+      );
+
       // Successful login
-      res
-        .status(200)
-        .json({
-          message: "Login successful",
-          user: { id: user.id, username: user.username, email: user.email },
-        });
+      res.status(200).json({
+        message: "Login successful",
+        token, // Send the token to the client
+        user: { id: user.id, username: user.username, email: user.email },
+      });
     }
   );
 };
